@@ -65,3 +65,22 @@ console.log(isPalindromeRecursive("hello"));
 // Recursively checks characters from both ends.
 // Base case: If pointers meet or cross, it's a palindrome.
 // Moves inward while comparing characters.
+
+// 5. Finding all palindromes in a sentence
+function findPalindromes(sentence) {
+  return sentence
+    .toLowerCase()
+    .match(/\b[a-z0-9]+\b/g)
+    .filter((word) => word === word.split("").reverse().join(""));
+}
+
+console.log(findPalindromes("A man, a plan, a canal, Panama"));
+console.log(findPalindromes("Wow, racecar and level are palindromes!"));
+
+// Explanation:
+// Breakdown of /\b[a-z0-9]+\b/g
+// / ... /g → The slashes /.../ define a regular expression, and the g flag means global search, meaning it will find all matches, not just the first one.
+// \b (Word Boundary) → Ensures that the match is a whole word, not part of another word.
+// [a-z0-9] → Matches any lowercase letter (a-z) or digit (0-9).
+// + → Means one or more of the preceding character class [a-z0-9], so it ensures we capture whole words, not just single characters.
+// \b (Word Boundary Again) → Ensures that the match ends at a word boundary.
