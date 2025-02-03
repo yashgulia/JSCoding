@@ -50,3 +50,18 @@ console.log(isPalindrome3("hello"));
 // Uses two pointers: one at the start (left), one at the end (right).
 // Moves inward while comparing characters.
 // Exits early if characters don't match, making it more efficient.
+
+// 4. Recursive approach
+function isPalindromeRecursive(str, left = 0, right = str.length - 1) {
+  if (left >= right) return true;
+  if (str[left] !== str[right]) return false;
+  return isPalindromeRecursive(str, left + 1, right - 1);
+}
+
+console.log(isPalindromeRecursive("racecar"));
+console.log(isPalindromeRecursive("hello"));
+
+// Explanation:
+// Recursively checks characters from both ends.
+// Base case: If pointers meet or cross, it's a palindrome.
+// Moves inward while comparing characters.
