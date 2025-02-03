@@ -29,3 +29,24 @@ console.log(isPalindrome2("Hello, world!"));
 // toLowerCase() converts all characters to lowercase.
 // replace(/[^a-z0-9]/g, '') removes all non-alphanumeric characters.
 // Cleaned string is reversed and compared with the original string.
+
+// 3. Two pointer approach
+function isPalindrome3(str) {
+  let left = 0,
+    right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) return false;
+    left++;
+    right--;
+  }
+  return true;
+}
+
+console.log(isPalindrome3("racecar"));
+console.log(isPalindrome3("hello"));
+
+// Explanation:
+// Uses two pointers: one at the start (left), one at the end (right).
+// Moves inward while comparing characters.
+// Exits early if characters don't match, making it more efficient.
