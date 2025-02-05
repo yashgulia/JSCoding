@@ -84,3 +84,43 @@ console.log(findPalindromes("Wow, racecar and level are palindromes!"));
 // [a-z0-9] → Matches any lowercase letter (a-z) or digit (0-9).
 // + → Means one or more of the preceding character class [a-z0-9], so it ensures we capture whole words, not just single characters.
 // \b (Word Boundary Again) → Ensures that the match ends at a word boundary.
+
+//  ***** Without Inbuilt Functions *****
+
+// 1. Optimized Two Pointer approach
+
+function isPalindrome4(str) {
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    // Skip non-alphanumeric characters
+    if (!isAlphanumeric(str[left])) {
+      left++;
+    } else if (!isAlphanumeric(str[right])) {
+      right--;
+    } else {
+      // Compare characters in a case-insensitive manner
+      if (str[left].toLowerCase() !== str[right].toLowerCase()) {
+        return false;
+      }
+      left++;
+      right--;
+    }
+  }
+  return true;
+}
+
+function isAlphanumeric(char) {
+  return (
+    (char >= "a" && char <= "z") ||
+    (char >= "A" && char <= "Z") ||
+    (char >= "0" && char <= "9")
+  );
+}
+
+console.log(isPalindrome4("racecar")); // true
+console.log(isPalindrome4("hello")); // false
+
+// Explanation:
+// The same two-pointer approach  but with the additional isAlphanumeric() function to filter out non-alphanumeric characters.
