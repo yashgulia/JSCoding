@@ -39,3 +39,15 @@ function flattenArray1(arr) {
 // Example
 const nestArray = [1, [2, [3, [4, 5]], 6], 7];
 console.log(flattenArray1(nestedArray));
+
+// Reduce Method
+function flattenArray3(arr) {
+  return arr.reduce((acc, val) => {
+    // Step 1: Start with an empty accumulator array.
+    return acc.concat(Array.isArray(val) ? flattenArray(val) : val); // Step 2: Recursively flatten if array, otherwise add to accumulator.
+  }, []);
+}
+
+// Example
+const nesArray = [1, [2, [3, [4, 5]], 6], 7];
+console.log(flattenArray3(nestedArray));
